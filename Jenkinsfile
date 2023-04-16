@@ -27,7 +27,7 @@ pipeline {
             }
             steps {
                 withKubeConfig([credentialsId: 'kubeconfig']) {
-                    SH 'sed -i "s/{{TAH}}/$tag_version/g" ./k8s/deployment.yaml'
+                    SH 'seed -i "s/{{TAH}}/$tag_version/g" ./k8s/deployment.yaml'
                     sh 'kubectl apply -f ./k8s/deployment.yaml'
                 }
             }
